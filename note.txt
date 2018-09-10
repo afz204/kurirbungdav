@@ -1,0 +1,132 @@
+TRUNCATE kas_outs;
+TRUNCATE kas_ins;
+TRUNCATE pay_kurirs;
+TRUNCATE kurirs;
+TRUNCATE delivery_charges;
+TRUNCATE corporates;
+TRUNCATE detail_trxs;
+TRUNCATE stocks;
+
+dev_P@ssw0rd
+daviflower_dev
+
+
+ALTER TABLE `delivery_charges` DROP `id`;
+ALTER TABLE `bidang_usahas` DROP `id`;
+ALTER TABLE `corporates` DROP `id`;
+ALTER TABLE `detail_trxs` DROP `id`;
+ALTER TABLE `kas_ins` DROP `id`;
+ALTER TABLE `kas_outs` DROP `id`;
+ALTER TABLE `kurirs` DROP `id`;
+ALTER TABLE `levels` DROP `id`;
+ALTER TABLE `menus` DROP `id`;
+ALTER TABLE `pay_kurirs` DROP `id`;
+ALTER TABLE `previllages` DROP `id`;
+ALTER TABLE `roles` DROP `id`;
+ALTER TABLE `staffs` DROP `id`;
+ALTER TABLE `sub_menus` DROP `id`;
+ALTER TABLE `stocks` DROP `id`;
+
+ALTER TABLE `delivery_charges` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `bidang_usahas` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `corporates` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `detail_trxs` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `kas_ins` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `kas_outs` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `kurirs` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `levels` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `menus` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `pay_kurirs` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `previllages` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `roles` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `staffs` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `sub_menus` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `stocks` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+ALTER TABLE `products` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+
+
+INSERT INTO `menus` (`id`, `menu`, `links`) VALUES (NULL, 'production', 'production');
+
+INSERT INTO `staffs` (`id`, `id_menu`, `id_roles`) VALUES (NULL, '11', '1');
+INSERT INTO `staffs` (`id`, `id_menu`, `id_roles`) VALUES (NULL, '11', '2');
+INSERT INTO `staffs` (`id`, `id_menu`, `id_roles`) VALUES (NULL, '11', '3');
+INSERT INTO `staffs` (`id`, `id_menu`, `id_roles`) VALUES (NULL, '11', '4');
+
+UPDATE table MENUS, STAFFS, SUB_MENUS,
+
+//category sub category
+
+SELECT cat.id, cat.name, subcat.id AS SubID, subcat.name AS SubCategory, subcat.category_id as categoriesID FROM categories AS cat
+LEFT OUTER JOIN categories AS subcat
+ON cat.id = subcat.category_id
+WHERE cat.category_id=0
+ORDER BY cat.name, subcat.name
+
+//product available city
+
+SELECT products.id, products.name_product, GROUP_CONCAT(provinces.name ORDER BY provinces.id) AS provinsi FROM products
+
+LEFT JOIN provinces ON FIND_IN_SET(provinces.id, products.available_on) > 0
+
+GROUP BY 1, 2
+
+//PRODUCT ALL
+
+SELECT cat.id, cat.name AS category, subcat.category_id AS subID, subcat.name AS subcategory, prod.id AS idProduct, prod.name_product, prod.cost_price, prod.selling_price, prod.sort_desc, prod.full_desc, prod.note, prod.images, GROUP_CONCAT(prov.name ORDER BY prov.id) AS provinsi FROM categories cat
+LEFT JOIN categories subcat
+ON subcat.category_id = cat.id
+INNER JOIN products prod
+ON prod.subcategory_id = subcat.id
+LEFT JOIN provinces prov
+ON FIND_IN_SET(prov.id, prod.available_on) > 0
+
+GROUP BY 1, 2
+
+1. Contact person have address
+2. pay kurir add filter by daterange
+3. info total unpaid and paid per hari
+
+			<li class="list-group-item">
+                  <div class="checkout-content">
+                     <div class="chekcout-img">
+                        <picture>
+                         <a href="<?=URL?>assets/images/product/the_beautifully_flowers.jpg" data-toggle="lightbox" data-gallery="example-gallery">
+                               <img src="<?=URL?>assets/images/product/the_beautifully_flowers.jpg" class="img-fluid img-thumbnail">
+                           </a>
+                       </picture>
+                     </div>
+                     <div class="checkout-sometext">
+                        <div class="title">the veautifully flowers</div>
+                        <div class="count-product">
+                           
+                           <div class="center">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <button class="btn btn-sm btn-outline-secondary btn-number-count" type="button" data-type="minus" disabled="disabled"><span class="fa fa-minus"></span></button>
+                                </div>
+                                <input style="text-align: center;" type="text" value="1" id="count-product-number" name="count-product-number" min="1" max="10" class="input-number form-control form-control-sm" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                  <button class="btn btn-sm btn-outline-secondary btn-number-count" type="button" data-type="plus"><span class="fa fa-plus"></span></button>
+                                </div>
+                              </div>
+                            
+                        </div>
+                        </div>
+                        <div class="price">Rp. 550.000.00</div>
+                        <div class="important-notes">
+                           <div class="note">
+                              Contextual classes also work with .list-group-item-action. Note the addition of the hover styles here not present in the previous example. Also supported is the .active state; apply it to indicate an active selection on a contextual list group item.
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+              </li>
+
+
+              //trasaction
+
+              id_sender
+              id_received
+              id_kurir
+              id_payment
+              discount_code

@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9766f3cf-e83b-43df-a629-d4cb71629c15" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/php/payment/reportPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/modul/kas.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/modul/kas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error_log" beforeDir="false" afterPath="$PROJECT_DIR$/error_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/ajax/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/ajax/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/ajax/pdfKasOut.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/ajax/pdfKasOut.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/ajax/productions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/ajax/productions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/ajax/states.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/ajax/states.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/dashboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dashboard/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/payment/kasIn.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/payment/kasIn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/payment/kas_besar.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/payment/kas_besar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/payment/report-payment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/payment/table-report.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/payment/table-report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/production/stocks.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/production/stocks.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="reportPayment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/payment/reportPayment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3264">
+              <caret line="192" selection-start-line="192" selection-end-line="192" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="belanja.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/production/belanja.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="129" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="129" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kas_besar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/payment/kas_besar.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="kas.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/js/modul/kas.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="391" column="62" selection-start-line="391" selection-start-column="62" selection-end-line="391" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>custom-select</find>
+      <find>$footer</find>
+      <find>count</find>
+      <find>$update</find>
+      <find>$reade</find>
+      <find>display: display</find>
+      <find>display: block</find>
+      <find>display: inline-block</find>
+      <find>display: display;</find>
+      <find>reportKasOut</find>
+      <find>$this-&gt;data</find>
+      <find>$baris</find>
+      <find>$this-&gt;Row</find>
+      <find>addKasIn</find>
+      <find>$query2</find>
+      <find>fileupload</find>
+      <find>nameProduct</find>
+      <find>ImagesProductID</find>
+      <find>images</find>
+      <find>form-report</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>$menu</replace>
+      <replace>$reade = 'style=&quot;display:none;&quot;'; $update</replace>
+      <replace>$read</replace>
+      <replace>display: block</replace>
+      <replace>display: inline-block</replace>
+      <replace>display: display</replace>
+      <replace>&quot;&quot;</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/florist.php" />
+        <option value="$PROJECT_DIR$/kurir.php" />
+        <option value="$PROJECT_DIR$/order.php" />
+        <option value="$PROJECT_DIR$/sales.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/payment.php" />
+        <option value="$PROJECT_DIR$/management.php" />
+        <option value="$PROJECT_DIR$/php/order/neworder.php" />
+        <option value="$PROJECT_DIR$/php/management/menu.php" />
+        <option value="$PROJECT_DIR$/php/ajax/submenu.php" />
+        <option value="$PROJECT_DIR$/php/management/users.php" />
+        <option value="$PROJECT_DIR$/php/management/profile.php" />
+        <option value="$PROJECT_DIR$/assets/js/modul/management.js" />
+        <option value="$PROJECT_DIR$/php/ajax/management.php" />
+        <option value="$PROJECT_DIR$/php/payment/kas.php" />
+        <option value="$PROJECT_DIR$/php/corporate/new.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
+        <option value="$PROJECT_DIR$/php/ajax/pdfKasOut.php" />
+        <option value="$PROJECT_DIR$/assets/css/offcanvas.css" />
+        <option value="$PROJECT_DIR$/assets/js/modul/corporate.js" />
+        <option value="$PROJECT_DIR$/php/corporate/index.php" />
+        <option value="$PROJECT_DIR$/php/corporate/profile.php" />
+        <option value="$PROJECT_DIR$/php/ajax/payment.php" />
+        <option value="$PROJECT_DIR$/php/ajax/listPayment.php" />
+        <option value="$PROJECT_DIR$/php/payment/kasIn.php" />
+        <option value="$PROJECT_DIR$/php/payment/kasOut.php" />
+        <option value="$PROJECT_DIR$/config/api.php" />
+        <option value="$PROJECT_DIR$/php/ajax/states.php" />
+        <option value="$PROJECT_DIR$/assets/js/custom.js" />
+        <option value="$PROJECT_DIR$/assets/vendors/select2/select2.min.css" />
+        <option value="$PROJECT_DIR$/assets/vendors/select2/select2.min.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/bluimp.min.css" />
+        <option value="$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/jquery.blueimp-gallery.min.js" />
+        <option value="$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/load-image.all.min.js" />
+        <option value="$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/canvas-to-blob.min.js" />
+        <option value="$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/blueimp-gallery.min.js" />
+        <option value="$PROJECT_DIR$/php/header.php" />
+        <option value="$PROJECT_DIR$/php/footer.php" />
+        <option value="$PROJECT_DIR$/php/kurir/deliv-charge.php" />
+        <option value="$PROJECT_DIR$/php/ajax/uploadImagesProduct.php" />
+        <option value="$PROJECT_DIR$/php/bd/list-product.php" />
+        <option value="$PROJECT_DIR$/assets/vendors/krajeee/css/fileinput.css" />
+        <option value="$PROJECT_DIR$/assets/js/modul/product.js" />
+        <option value="$PROJECT_DIR$/php/ajax/product.php" />
+        <option value="$PROJECT_DIR$/note.txt" />
+        <option value="$PROJECT_DIR$/php/bd/product.php" />
+        <option value="$PROJECT_DIR$/php/payment/table-report.php" />
+        <option value="$PROJECT_DIR$/assets/js/modul/kas.js" />
+        <option value="$PROJECT_DIR$/php/production/belanja.php" />
+        <option value="$PROJECT_DIR$/php/payment/reportPayment.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="608" />
+    <option name="y" value="28" />
+    <option name="width" value="814" />
+    <option name="height" value="867" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>UndefinedPHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PhpUnitUndefinedDataProviderInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="bungdav" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bungdav" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bungdav" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bungdav" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bungdav" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bungdav" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bungdav" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bungdav" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="payment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bungdav" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bungdav" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\bungdav\php\Order" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9766f3cf-e83b-43df-a629-d4cb71629c15" name="Default" comment="" />
+      <created>1522551869991</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522551869991</updated>
+      <workItem from="1522551876034" duration="33981000" />
+      <workItem from="1522839089767" duration="5644000" />
+      <workItem from="1522874540104" duration="70000" />
+      <workItem from="1522929532358" duration="6882000" />
+      <workItem from="1523342564629" duration="18035000" />
+      <workItem from="1523369120528" duration="9096000" />
+      <workItem from="1523443534622" duration="7838000" />
+      <workItem from="1523456922468" duration="23381000" />
+      <workItem from="1523544423751" duration="6159000" />
+      <workItem from="1523608341252" duration="918000" />
+      <workItem from="1523615009193" duration="22972000" />
+      <workItem from="1523646910793" duration="544000" />
+      <workItem from="1523786976079" duration="58000" />
+      <workItem from="1525102843973" duration="210000" />
+      <workItem from="1525133511997" duration="43825000" />
+      <workItem from="1527262679426" duration="12445000" />
+      <workItem from="1527311245465" duration="21000" />
+    </task>
+    <task id="LOCAL-00001" summary="new kas">
+      <created>1523484393211</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523484393211</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new kas in out">
+      <created>1523646485784</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523646485784</updated>
+    </task>
+    <task id="LOCAL-00003" summary="bugs datatable">
+      <created>1523647237300</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523647237300</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="192079000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24963397" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32769832" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new kas" />
+    <MESSAGE value="new kas in out" />
+    <MESSAGE value="bugs datatable" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugs datatable" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/management/users.php</url>
+          <line>60</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/management/profile.php</url>
+          <line>63</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php/payment/reportPayment.php</url>
+          <line>186</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/php/management/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="143" lean-forward="true" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="85" selection-start-line="55" selection-start-column="85" selection-end-line="55" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/pdfKasOut.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/offcanvas.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1487">
+          <caret line="149" column="1" lean-forward="true" selection-start-line="149" selection-start-column="1" selection-end-line="149" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/corporate/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="115" column="42" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/listPayment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/corporate/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/payment/kasIn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="100" column="36" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/payment/kasOut.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/corporate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="8" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/states.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" column="73" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/submenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/vendors/select2/select2.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15195" selection-start-column="15195" selection-end-column="15195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/vendors/select2/select2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="73603" selection-start-column="73603" selection-end-column="73603" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="87" column="62" selection-start-line="87" selection-start-column="62" selection-end-line="87" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="51">
+            <caret line="3" selection-start-line="3" selection-end-line="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/corporate/newCP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="101" column="26" selection-start-line="98" selection-start-column="20" selection-end-line="101" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/bluimp.min.css" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/jquery.blueimp-gallery.min.js" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/load-image.all.min.js" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/canvas-to-blob.min.js" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/blueimp-gallery.min.js" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/js/jquery.fileupload-image.js" />
+    <entry file="file://$PROJECT_DIR$/assets/vendors/jQuery-FileUpload/js/app.js" />
+    <entry file="file://$PROJECT_DIR$/php/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="287" column="91" selection-start-line="287" selection-start-column="91" selection-end-line="287" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/product/25f91a382ebe6b7fa21d57b0228546ea.jpg" />
+    <entry file="file://$PROJECT_DIR$/assets/images/product/undefined_1.png" />
+    <entry file="file://$PROJECT_DIR$/assets/js/modul/order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="11" selection-start-line="6" selection-start-column="8" selection-end-line="27" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/kurir/deliv-charge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/product/[.jpg" />
+    <entry file="file://$PROJECT_DIR$/assets/images/product/bunga_malem_minggu.jpg" />
+    <entry file="file://$PROJECT_DIR$/php/ajax/uploadImagesProduct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="62" column="19" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/modul/corporate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="59" column="26" lean-forward="true" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/vendors/krajeee/css/fileinput.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="556" column="38" selection-start-line="556" selection-start-column="38" selection-end-line="556" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bd/list-product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="77" column="85" selection-start-line="77" selection-start-column="75" selection-end-line="77" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/modul/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="76" column="92" selection-start-line="76" selection-start-column="88" selection-end-line="76" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="28" column="117" selection-start-line="28" selection-start-column="117" selection-end-line="28" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/ajax/kurir.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/kurir/list-kurir.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="47" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="61" column="30" lean-forward="true" selection-start-line="57" selection-end-line="61" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/payment/table-report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/bd/product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="17" column="119" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/payment/reportPayment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3264">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/production/belanja.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="129" selection-start-line="4" selection-start-column="73" selection-end-line="4" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/payment/kas_besar.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/modul/kas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="391" column="62" selection-start-line="391" selection-start-column="62" selection-end-line="391" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
