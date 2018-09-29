@@ -37,15 +37,19 @@ if($_GET['type'] == 'aceptedreject'){
                 $reff = $config->lastInsertId();
                 $logs = $config->saveLogs($reff, $admin, 'c', 'accepted jobs');
 
-                $update = $config->runQuery("UPDATE kurir_jobs SET Status = '1', StatusKirim = 1 WHERE TransactionNumber='". $a ."' AND Status = '' ");
-                $update->execute();
+                if($stmt) {
+                    $update = $config->runQuery("UPDATE kurir_jobs SET kurir_jobs.Status = '1', StatusKirim = 1 WHERE TransactionNumber='". $a ."'");
+                    $update->execute();
 
-                if($update) {
-                    echo 'Success!';
-                $logs = $config->saveLogs($a, $admin, 'u', 'transaction');
+                    if($update) {
+                        echo 'Success!';
+                    $logs = $config->saveLogs($a, $admin, 'u', 'transaction');
 
+                    } else {
+                        echo 'Failed!';
+                    }
                 } else {
-                    echo 'Failed!';
+                    echo 'Failed Input';
                 }
 
             } else {

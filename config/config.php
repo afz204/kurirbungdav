@@ -6,8 +6,8 @@
  * Time: 13.10
  */
 require 'session.php';
-define('URL', 'http://kurir.bungadavi.co.id/');
-define('URL_SERVER', 'http://kurir.bungadavi.co.id/');
+define('URL', 'http://localhost/kurirbungdav/');
+define('URL_SERVER', 'http://localhost/kurirbungdav/');
 
 
 $config = new Admin();
