@@ -33,6 +33,7 @@ if(empty($_POST['imagesname'])){
 
 $imagesid = empty($_POST['imagesid']) ? '' : $_POST['imagesid'];
 $imagesName = empty($_POST['imagesname']) ? '' : $_POST['imagesname'];
+$urlserver = empty($_POST['urlserver']) ? '' : $_POST['urlserver'];
 
 $title = $imagesName;
 // a flag to see if everything is ok
@@ -49,7 +50,8 @@ for($i=0; $i < count($filenames); $i++){
     $string = str_replace(" ", "_", $filenames[$i]);
     //$ext = explode('.', basename($filenames[$i]));
     //$target = "../../assets/images/product" . DIRECTORY_SEPARATOR . md5(uniqid()) . "." . array_pop($ext);
-    $target = "../../assets/images/product/". $title . '.jpg';
+    $target = "../../assets/images/kurir/". $title . '.jpg';
+    // $target = $urlserver."assets/images/kurir/". $title . '.jpg';
     if(move_uploaded_file($images['tmp_name'][$i], $target)) {
         $success = true;
         $paths[] = $target;
@@ -74,11 +76,15 @@ if ($success === true) {
     // $output = ['uploaded' => $paths];
     $output = "OK";
 
-    $stmt = $config->runQuery('UPDATE products SET images = :images where product_id = :code');
+    $stmt = $config->runQuery("UPDATE kurir_jobs SET StatusKirim = 2,  Photos = :images, Update_by = '".$admin."' where TransactionNumber = :code");
     $stmt->execute(array(
         ':images' => $title . '.jpg',
         ':code'   => $imagesid
     ));
+    $iamgesidnya = $title.'.jpg';
+    $updatetransaction = $config->runQuery("UPDATE transaction SET statusOrder = '3', notes = '". $iamgesidnya ."'   WHERE transactionID ='". $imagesid ."' ");
+    $updatetransaction->execute();
+    
 } elseif ($success === false) {
     $output = ['error'=>'Error while uploading images. Contact the system administrator'];
     // delete any uploaded files

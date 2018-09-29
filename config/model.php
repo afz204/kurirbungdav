@@ -33,7 +33,7 @@ if(isset($session_id)){
 
     WHERE users.id = :userID";
     $stmt = $config->runQuery($sql1);
-    $stmt->execute(array(':userID' => $session_id));
+    $stmt->execute(array(':userID' => $session_id['userid']));
     $admin = array();
     while ($row = $stmt->fetch(PDO::FETCH_LAZY))
     {
@@ -61,7 +61,7 @@ if(isset($session_id)){
     WHERE previllages.id_admin = :adminID GROUP BY sub_menus.submenu DESC ORDER BY menus.id";
 
     $stmt2 = $config->runQuery($sql2);
-    $stmt2->execute(array(':adminID' => $session_id));
+    $stmt2->execute(array(':adminID' => $session_id['userid']));
 
     $category = array();
     while ($row = $stmt2->fetch(PDO::FETCH_LAZY))

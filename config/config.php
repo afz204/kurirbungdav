@@ -5,24 +5,18 @@
  * Date: 01/04/2018
  * Time: 13.10
  */
-define('URL', 'http://localhost/kurirbungdav/');
-define('CORPORATE', URL.'corporate/');
-define('ORDER', URL.'order/');
-define('MANAGEMENT', URL.'management/');
-define('PAYMENT', URL.'payment/');
-define('BD', URL.'bd/');
-
-
-require 'api.php';
 require 'session.php';
+define('URL', 'http://kurir.bungadavi.co.id/');
+define('URL_SERVER', 'http://kurir.bungadavi.co.id/');
+
 
 $config = new Admin();
 
-if(isset($_SESSION['user_session']))
+if(isset($_SESSION['user_session']) && $_SESSION['user_session']['usertype'] == 'kurir')
 {
     $session_id = $_SESSION['user_session'];
 }else{
-    $session_id = "";
+    echo 'error';
 }
 //read url
 $url = "$_SERVER[REQUEST_URI]";
@@ -53,20 +47,7 @@ if (isset($url[3])){
 require 'model.php';
 $device = $config->systemInfo();
 
-
-//
-// $admin = $config->runQuery('SELECT id, name, email, jabatan, role_id FROM users WHERE id = :id');
-// $admin->execute(array(':id' => $session_id));
-// $admin = $admin->fetch(PDO::FETCH_LAZY);
-
-// //info weight pages
-// $previllages = $config->ProductsJoin('sub_menus.link, previllages.weight', 'sub_menus', 'INNER JOIN previllages ON previllages.id_submenu = sub_menus.id',
-//     "WHERE previllages.id_admin = ". $admin[0]['user_id'] ." AND sub_menus.link LIKE '%". $footer ."%' GROUP BY sub_menus.link");
-// $previllages = $previllages->fetch(PDO::FETCH_LAZY);
-
-
-// //end of info
-// $listMenu = $config->ProductsJoin('menus.id, menus.menu, menus.links, staffs.id_roles', 'menus', 'INNER JOIN staffs ON staffs.id_menu = menus.id', 'WHERE staffs.id_roles = '. $admin['role_id']);
-// $subMenus = $config->ProductsJoin('sub_menus.submenu, sub_menus.link, menus.menu, menus.links, previllages.id_admin, previllages.weight', 'sub_menus', 'INNER JOIN menus ON menus.id = sub_menus.id_menu
-// INNER JOIN previllages ON previllages.id_submenu = sub_menus.id', "WHERE previllages.id_admin = ".$admin[0]['user_id'] ." AND menus.links LIKE '%". $menu ."%'" );
-$listAdmin = $config->Products('id, name, email, jabatan, role_id, status', 'users');
+$datakurir = $config->getKurir($_SESSION['user_session']['userid']);
+// echo '<pre>';
+// print_r($datakurir);
+// echo '</pre>';

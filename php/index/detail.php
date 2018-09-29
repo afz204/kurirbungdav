@@ -1,3 +1,12 @@
+<?php 
+    $arrstatus = [
+        'New Jobs',
+        'On Delivery',
+        'Success',
+        'Return'
+    ];
+    $data = $config->getData('kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " transaction.transactionID = '". $_GET['order'] ."'");
+?>
 <style type="text/css">
 	.content {
 		display: block;
@@ -43,11 +52,17 @@
       		<tr class="title">
       			<td>Images Product</td>
       		</tr>
+		<?php $product = $config->Products('id_product,product_name', "transaction_details WHERE id_trx = '". $data['transactionID'] ."'");
+				while($row = $product->fetch(PDO::FETCH_LAZY)) {
+					$nameproduct = strtolower($row['product_name']);
+					$nameproduct = str_replace(' ', '_', $nameproduct).'.jpg';
+		?>
       		<tr class="images">
       			<td>
-      				<img src="<?=URL?>assets/images/product/the_beautifully_flowers.jpg" class="img img-responsive img-rounded">
+      				<img src="<?=URL_SERVER?>assets/images/product/<?=$nameproduct?>" class="img img-responsive img-rounded">
       			</td>
       		</tr>
+				<?php } ?>
       		<tr class="title">
       			<td>Detail Pengiriman</td>
       		</tr>
@@ -56,46 +71,112 @@
       				<tr class="title">
       					<td id="1">Kirim Ke </td>
       					<td id="2">: </td>
-      					<td id="3">Rumah Mantan </td>
+      					<td id="3"><?=$data['nama_penerima']?> </td>
       				</tr>
       				<tr class="title">
       					<td id="1">Alamat </td>
       					<td id="2">: </td>
-      					<td id="3">Jalan Kenangan indah nomor 2 </td>
+      					<td id="3"><?=$data['alamat_penerima']?> </td>
       				</tr>
       				<tr class="title">
       					<td id="1">Kelurahan </td>
       					<td id="2">: </td>
-      					<td id="3">Pondok Bambu </td>
+      					<td id="3"><?=$data['Kelurahan']?> </td>
       				</tr>
       				<tr class="title">
       					<td id="1">Kecamatan </td>
       					<td id="2">: </td>
-      					<td id="3">Duren Sawit </td>
+      					<td id="3"><?=$data['Kecamatan']?> </td>
       				</tr>
       				<tr class="title">
       					<td id="1">Kota </td>
       					<td id="2">: </td>
-      					<td id="3">Jatinegara </td>
-      				</tr>
-      				<tr class="title">
-      					<td id="1">Nomor HP </td>
-      					<td id="2">: </td>
-      					<td id="3">082210364609 </td>
+      					<td id="3"><?=$data['KotaName']?> </td>
       				</tr>
       				<tr class="title">
       					<td id="1">Notes </td>
       					<td id="2">: </td>
-      					<td id="3">Silahkan kirim sesuai orderan saja ya. </td>
+      					<td id="3"><?=$data['delivery_marks']?></td>
       				</tr>
-      				<tr class="button">
+					  <?php if(isset($_GET['success']) && $_GET['success'] == 'true') { if($data['StatusDelivery'] != 2) { ?>
+						<tr class="title">
+								<td colspan="3" id="1" style="text-align: center; padding-top: 20px;">Input Images</td>
+							</tr>
+							<tr class="button">
+								<td colspan="3" id="1" style="border: 1px dashed red; border-radius: 20px; padding: 10px; ">
+								<form id="uploadImagesProduct" method="post" enctype="multipart/form-data" >
+									<div class="form-group">
+										<input type="hidden" id="ImagesProductID" name="ImagesProductID" value="<?=$data['transactionID']?>">
+										<input type="hidden" id="ImagesName" name="ImagesName" value="success_<?=$data['transactionID']?>">
+										<input type="hidden" id="urlserver" name="urlserver" value="<?=URL_SERVER?>">
+										<div class="file-loading">
+											<input type="file" id="images" name="images[]" multiple>
+										</div>
+										<br>
+									</div>
+								</form>
+								<div id="kv-success-2" class="alert alert-success" style="margin-top:10px;display:none"></div>
+								</td>
+							</tr>
+							<?php } else { ?>
+								<tr class="button">
+								<td colspan="3" id="1">
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<button type="button" onclick="location.href='<?=URL?>'" class="btn btn-sm btn-outline-success">Back</button>
+									</div>
+								</td>
+							</tr>
+							<?php }  ?>
+					  <?php } elseif(isset($_GET['success']) && $_GET['success'] == 'false') { 
+						  if($data['StatusDelivery'] != 3) { ?>
+							<tr class="title">
+								<td colspan="3" id="1" style="text-align: center; padding-top: 20px;">Form Return</td>
+							</tr>
+							<tr class="button">
+								<td colspan="3" id="1" style="border: 1px dashed red; border-radius: 20px; padding: 10px; ">
+									<form methode="post" action="" id="formreturn">
+									<div class="form-group">
+									<textarea class="form-control" id="alasanreturn" rows="3" placeholder="input alasan return"></textarea>
+									<input type="hidden" id="transactionID" value="<?=$data['transactionID']?>">
+									</div>
+									<button type="submit" class="btn btn-sm btn-block btn-primary">Submit Return</button>
+									</form>
+								</td>
+							</tr>
+					  <?php } else { ?>
+						<tr class="button">
       					<td colspan="3" id="1">
       						<div class="btn-group" role="group" aria-label="Basic example">
-					            <button type="button" class="btn btn-sm btn-outline-success">Success</button>
-					            <button type="button" class="btn btn-sm btn-outline-danger">Return </button>
+					            <button type="button" onclick="location.href='<?=URL?>'" class="btn btn-sm btn-outline-success">Back</button>
 					        </div>
       					</td>
       				</tr>
+					  <?php }  ?>
+					  <?php } else {  if($data['StatusAcepted'] == 1 && $data['StatusDelivery'] == 1) { ?>
+					  <tr class="button">
+      					<td colspan="3" id="1">
+      						<div class="btn-group" role="group" aria-label="Basic example">
+					            <button type="button" onclick="location.href='<?=URL?>index/?p=detail&order=<?=$data['transactionID']?>&success=true'" class="btn btn-sm btn-outline-success">Success</button>
+					            <button type="button" onclick="location.href='<?=URL?>index/?p=detail&order=<?=$data['transactionID']?>&success=false'" class="btn btn-sm btn-outline-danger">Return </button>
+					        </div>
+      					</td>
+      				</tr>
+					  <tr class="button">
+								<td colspan="3" id="1">
+									<div class="btn-group" role="group" aria-label="Basic example">
+										<button type="button" onclick="location.href='<?=URL?>'" class="btn btn-sm btn-outline-success">Back</button>
+									</div>
+								</td>
+							</tr>
+					  <?php } else { ?> 
+						<tr class="button">
+      					<td colspan="3" id="1">
+      						<div class="btn-group" role="group" aria-label="Basic example">
+					            <button type="button" onclick="location.href='<?=URL?>'" class="btn btn-sm btn-outline-success">Back</button>
+					        </div>
+      					</td>
+      				</tr>
+					  <?php } } ?>
       			</table>
       		</tr>
       	</table>

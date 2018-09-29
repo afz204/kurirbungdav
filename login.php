@@ -20,8 +20,13 @@ if(isset($_POST['btn-login']))
     if ($cekLogin->runLogin($username, $password)) {
         # code...
 //        echo 'has login';
-       $cekLogin->redirect('index');
-       $logs = $config->saveLogs('0', $_SESSION['user_session'], 'f', 'login users');
+        if($_SESSION['user_session']['usertype'] == 'kurir') {
+            $cekLogin->redirect('index');
+            $logs = $config->saveLogs('0', $_SESSION['user_session'], 'f', 'login users');
+        } else {
+            $error = 'Done!';
+        }
+       
     } else{
         $error = $_SESSION['error'];
     }

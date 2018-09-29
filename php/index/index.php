@@ -1,43 +1,53 @@
+<?php 
+    $arrstatus = [
+        'New Jobs',
+        'On Delivery',
+        'Success',
+        'Return'
+    ];
+    $newjobs = $config->ProductsJoin('kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs', 'LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " WHERE kurir_jobs.KurirID = '". $datakurir['id'] ."' AND kurir_jobs.StatusKirim NOT IN (2)");
+
+?>
 <style>
-table {
-    display: block;
-    width: 100%;
-}
-table tr td {
-    padding: 1%;
-    font-size: 14px;
-}
-table tr td[id="1"] {
-    width: 100px;
-    font-weight: 500;
-    vertical-align: top;
-}
-table tr td[id="2"] {
-    width: 10px;
-    text-align: center;
-    vertical-align: top;
-}
-table tr td[id="3"] {
-    width: 200px; 
-    vertical-align: top;
-}
-table tr td[id="4"] {
-    vertical-align: top;
-    text-align: center;
-    padding-bottom: 2%;
-    border-bottom: 1px dashed #8e8a8a;
-}
-.badge {
-    display: inline-block;
-    padding: .30em .7em;
-    font-size: 90%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .2rem;
-}
+    table {
+        display: block;
+        width: 100%;
+    }
+    table tr td {
+        padding: 1%;
+        font-size: 14px;
+    }
+    table tr td[id="1"] {
+        width: 100px;
+        font-weight: 500;
+        vertical-align: top;
+    }
+    table tr td[id="2"] {
+        width: 10px;
+        text-align: center;
+        vertical-align: top;
+    }
+    table tr td[id="3"] {
+        width: 200px; 
+        vertical-align: top;
+    }
+    table tr td[id="4"] {
+        vertical-align: top;
+        text-align: center;
+        padding-bottom: 2%;
+        border-bottom: 1px dashed #8e8a8a;
+    }
+    .badge {
+        display: inline-block;
+        padding: .30em .7em;
+        font-size: 90%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .2rem;
+    }
 </style>
 <main role="main" class="container">
       <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -45,126 +55,67 @@ table tr td[id="4"] {
         <div class="media text-muted pt-3">
           <div class="row">
                 <div class="content">
-                    <table border="0">
+                
+                    <?php while($row = $newjobs->fetch(PDO::FETCH_LAZY)) { 
+                        if($row['StatusAcepted'] == 1) $infokirim = '<span class="badge badge-sm badge-success">Accept</span>';
+                        if($row['StatusAcepted'] == 2) $infokirim = '<span class="badge badge-sm badge-danger">Reject</span>';
+                        ?>
+                        <table border="0">
                         <tr>
                             <td colspan="3">
                             <div class="title">
-                                <a href="<?=URL?>index/?p=detail&order=789987678">OrderNumber #BD_98769876</a>
+                                <a href="<?=URL?>index/?p=detail&order=<?=$row['transactionID']?>">OrderNumber #<?=$row['transactionID']?></a>
                             </div>
                             </td>
                         </tr>
                         <tr>
+                            <td id="1">Status Jobs</td>
+                            <td id="2">:</td>
+                            <td id="3"><span class="badge badge-sm badge-info"><?=$arrstatus[$row['StatusDelivery']]?></span></td>
+                        </tr>
+                        <tr>
                             <td id="1">Kirim Ke</td>
                             <td id="2">:</td>
-                            <td id="3">Pondok Cabe  </td>
+                            <td id="3"><span class="badge badge-primary"><?=$row['Kelurahan']?></span> </td>
                         </tr>
                         <tr>
                             <td id="1">Alamat</td>
                             <td id="2">:</td>
-                            <td id="3">Cipinang indah 2 blok ee 12a  </td>
+                            <td id="3"><?=$row['alamat_penerima']?></td>
                         </tr>
                         <tr>
                             <td id="1">Kelurahan</td>
                             <td id="2">:</td>
-                            <td id="3">Pondok Cabe</td>
+                            <td id="3"><?=$row['Kelurahan']?></td>
                         </tr>
                         <tr>
                             <td id="1">Kecamatan</td>
                             <td id="2">:</td>
-                            <td id="3">Ujung Pandang</td>
+                            <td id="3"><?=$row['Kecamatan']?></td>
                         </tr>
                         <tr>
                             <td id="1">Kota</td>
                             <td id="2">:</td>
-                            <td id="3">Jakarta Timur</td>
+                            <td id="3"><?=$row['KotaName']?></td>
                         </tr>
+                        <?php if($row['StatusDelivery'] == 0) { ?>
                         <tr>
                             <td colspan="3" id="4">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-sm btn-outline-success">Acept</button>
-                                <button type="button" class="btn btn-sm btn-outline-danger">Reject </button>
+                                <button type="button" onclick="aceptedreject(1, '<?=$row['transactionID']?>')" class="btn btn-sm btn-outline-success">Accept</button>
+                                <button type="button" onclick="aceptedreject(2, '<?=$row['transactionID']?>')" class="btn btn-sm btn-outline-danger">Reject </button>
                             </div>
                             </td>
                         </tr>
-                    </table>
-                    <table border="0">
-                        <tr>
-                            <td colspan="3">
-                            <div class="title">
-                                <a href="<?=URL?>index/?p=detail&order=789987678">OrderNumber #BD_98769876</a>
-                            </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kirim Ke</td>
-                            <td id="2">:</td>
-                            <td id="3">Pondok Cabe  </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Alamat</td>
-                            <td id="2">:</td>
-                            <td id="3">Cipinang indah 2 blok ee 12a  </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kelurahan</td>
-                            <td id="2">:</td>
-                            <td id="3">Pondok Cabe</td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kecamatan</td>
-                            <td id="2">:</td>
-                            <td id="3">Ujung Pandang</td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kota</td>
-                            <td id="2">:</td>
-                            <td id="3">Jakarta Timur</td>
-                        </tr>
+                        <?php } else { ?>
                         <tr>
                             <td colspan="3" id="4">
-                            <span class="badge badge-success">Acepted</span>
+                            <?=$infokirim?>
                             </td>
                         </tr>
+                        <?php } ?>
                     </table>
-                    <table border="0">
-                        <tr>
-                            <td colspan="3">
-                            <div class="title">
-                                <a href="<?=URL?>index/?p=detail&order=789987678">OrderNumber #BD_98769876</a>
-                            </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kirim Ke</td>
-                            <td id="2">:</td>
-                            <td id="3">Pondok Cabe  </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Alamat</td>
-                            <td id="2">:</td>
-                            <td id="3">Cipinang indah 2 blok ee 12a  </td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kelurahan</td>
-                            <td id="2">:</td>
-                            <td id="3">Pondok Cabe</td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kecamatan</td>
-                            <td id="2">:</td>
-                            <td id="3">Ujung Pandang</td>
-                        </tr>
-                        <tr>
-                            <td id="1">Kota</td>
-                            <td id="2">:</td>
-                            <td id="3">Jakarta Timur</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" id="4">
-                            <span class="badge badge-danger">Reject</span>
-                            </td>
-                        </tr>
-                    </table>
+                    <?php } ?>
                 </div>
           </div>
         </div>

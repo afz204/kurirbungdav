@@ -26,7 +26,10 @@ class Login
                 if(password_verify($password, $userRow['password']))
                 {
                     if($userRow['status'] == '1'){
-                        $_SESSION['user_session'] = $userRow['id'];
+                        $_SESSION['user_session'] = [
+                            'usertype' => 'kurir',
+                            'userid' => $userRow['id'],
+                        ];
                         
                         return true;
                     }else{
@@ -104,8 +107,8 @@ class Admin
 
     public function adminID()
     {
-        $id = $_SESSION['user_session'];
-        $stmt = $this->conn->prepare("SELECT id FROM users WHERE id = :user_id");
+        $id = $_SESSION['user_session']['userid'];
+        $stmt = $this->conn->prepare("SELECT id FROM kurirs WHERE id = :user_id");
         $stmt->execute(array(':user_id' => $id));
         $stmt = $stmt->fetch(PDO::FETCH_LAZY);
         $stmt = $stmt['id'];
@@ -139,6 +142,7 @@ class Admin
     {
         $stmt = $this->conn->prepare("SELECT id, nama_kurir, email, phone, wa, alamat, kel, kec, kota, province, status, created_at FROM kurirs WHERE id = :user_id");
         $stmt->execute(array(':user_id' => $id));
+        $stmt = $stmt->fetch(PDO::FETCH_LAZY);
         return $stmt;
 
     }
@@ -166,7 +170,7 @@ class Admin
     }
     public function ProductsJoin($field, $table, $join, $clause)
     {
-        $stmt = $this->conn->prepare('SELECT '. $field .' FROM '. $table.' '.$join.' '.$clause);
+        $stmt = $this->conn->prepare('SELECT '. $field .' FROM '. $table. ' ' .$join. ' ' .$clause);
         $stmt->execute();
         return $stmt;
     }
@@ -632,6 +636,13 @@ class Admin
         $stmt->execute();
 
         return $stmt;
+    }
+    public function _debugvar($var){
+        echo '<pre>';
+        $data = var_dump($var);
+        echo '</pre>';
+
+        return $data;
     }
     public function actionMsg($type, $msg)
     {
