@@ -723,6 +723,16 @@ class Admin
 
         return $password;
     }
+    public function _formatdate($val) {
+        $Dates = Date('d F Y', strtotime($val));
+
+        return $Dates;
+    }
+    public function _urlserver() {
+       $URL = 'http://localhost/kurirbungdav/';
+
+        return $URL;
+    }
 
 }
 

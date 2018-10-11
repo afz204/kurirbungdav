@@ -34,13 +34,13 @@ $(document).ready(function() {
     }).on('fileloaded', function(event, file, previewId, index, reader) {
         console.log("fileloaded");
     }).on('filebatchuploadsuccess', function(event, data) {
-        // var buttonSuccessProduct = $('<button class="btn btn-block btn-link">Done !</button>');
-        // // $.each(data.files, function(key, file) {
-        // //     var fname = file.name;
-        // //     out = out + '<li>' + 'Uploaded file # ' + (key + 1) + ' - '  +  fname + ' successfully.' + '</li>';
-        // // });
-        // $('#kv-success-2').append(buttonSuccessProduct);
-        // $('#kv-success-2').fadeIn('slow');
+        var buttonSuccessProduct = $('<button class="btn btn-block btn-link" onclick="window.history.back();" >Done !</button>');
+        // $.each(data.files, function(key, file) {
+        //     var fname = file.name;
+        //     out = out + '<li>' + 'Uploaded file # ' + (key + 1) + ' - '  +  fname + ' successfully.' + '</li>';
+        // });
+        $('#kv-success-2').append(buttonSuccessProduct);
+        $('#kv-success-2').fadeIn('slow');
     });
 
     $('#formreturn').on('submit', function(e) {

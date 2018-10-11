@@ -5,7 +5,7 @@
         'Success',
         'Return'
     ];
-    $newjobs = $config->ProductsJoin('kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs', 'LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " WHERE kurir_jobs.KurirID = '". $datakurir['id'] ."' AND kurir_jobs.StatusKirim NOT IN (2)");
+    $newjobs = $config->ProductsJoin('kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs', 'LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " WHERE kurir_jobs.KurirID = '". $datakurir['id'] ."' AND kurir_jobs.StatusKirim NOT IN (1, 2, 3)");
 
 ?>
 <style>
