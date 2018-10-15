@@ -52,7 +52,7 @@
       		<tr class="title">
       			<td>Images Product</td>
       		</tr>
-		<?php $product = $config->Products('id_product,product_name', "transaction_details WHERE id_trx = '". $data['transactionID'] ."'");
+		<?php $product = $config->Products('id_product,product_name, transaction.delivery_date', "transaction_details LEFT JOIN transaction on transaction.transactionID = transaction_details.id_trx WHERE id_trx = '". $data['transactionID'] ."'");
 				while($row = $product->fetch(PDO::FETCH_LAZY)) {
 					$nameproduct = strtolower($row['product_name']);
 					$nameproduct = str_replace(' ', '_', $nameproduct).'.jpg';
@@ -68,6 +68,16 @@
       		</tr>
       		<tr>
       			<table class="detail">
+      				<tr class="title">
+      					<td id="1">Nomor Invoice </td>
+      					<td id="2">: </td>
+      					<td id="3">#<?=$data['transactionID']?> </td>
+      				</tr>
+      				<tr class="title">
+      					<td id="1">Tanggal Kirim</td>
+      					<td id="2">: </td>
+      					<td id="3"><?=$config->_formatdate($data['delivery_date'])?></td>
+      				</tr>
       				<tr class="title">
       					<td id="1">Kirim Ke </td>
       					<td id="2">: </td>

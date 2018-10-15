@@ -729,7 +729,7 @@ class Admin
         return $Dates;
     }
     public function _urlserver() {
-       $URL = 'http://localhost/kurirbungdav/';
+       $URL = 'http://dev.bungadavi.co.id/';
 
         return $URL;
     }

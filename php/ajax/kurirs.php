@@ -528,7 +528,9 @@ if($_GET['type'] == 'returnform'){
                                                 <tr>
                                                 <td width="100px" class="w325" bgcolor="#ffffff" style="padding: 7px 5px; border-bottom: 1px solid;" align="center">
                                                     <span class="content-head" style="font-family:Arial; color:#444444; font-style: italic;">
-                                                        " '.$data['card_isi'].' "
+                                                    '.$data['card_to'].' <br>
+                                                    " '.$data['card_isi'].' " <br>
+                                                    '.$data['card_from'].'
                                                     </span>
                                                 </td>
                                                 </tr>
@@ -573,7 +575,7 @@ if($_GET['type'] == 'returnform'){
             
             $cc = 'fiki@bungadavi.co.id';
             $config = new Mail();
-            $email = $config->Mailler('ardinirianti@gmail.com', $receivedName, $cc, $subject, $content);
+            $email = $config->Mailler($receivedEmail, $receivedName, $cc, $subject, $content);
         } else {
             echo 'Failed Transaction!';
         }

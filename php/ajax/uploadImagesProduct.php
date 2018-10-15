@@ -105,7 +105,7 @@ if ($success === true) {
         $dataproduct[] = '
         <tr style="background-color: #ffffff;">
             <td style="padding: 5px; border-bottom: 0.5px solid;">
-            <img style="border:1px solid #FFFFFF; padding:1px; " src="'.$URL_SERVER.'assets/images/product/'. str_replace(' ', '_', $row['product_name']) .'.jpg" width="100" height="95" align=center>
+            <img style="border:1px solid #FFFFFF; padding:1px; " src="http://dev.bungadavi.co.id/assets/images/product/'. str_replace(' ', '_', strtolower($row['product_name'])) .'.jpg" width="100" height="95" align=center>
             </td>
             <td style="padding: 3px;font-size: 14px;font-weight: 600; border-bottom: 0.5px solid; text-transform: capitalize;">'. strtoupper($row['id_product']) .' '. $row['product_name'] .'</td>
             <td style="padding: 3px;font-size: 14px;font-weight: 600; text-align: center; border-bottom: 0.5px solid; padding-right: 4px;">'. $row['product_qty'] .'</td>
@@ -133,7 +133,16 @@ if ($success === true) {
            <span class="article-content" style="font-family:Arial; font-size:24px;color:#333333; font-weight:bold; line-height:26px; color: green;">Has Been Send! <br> Thank you!</span>
            <br /><br />
         </td>
-     </tr>';
+     </tr>
+     <tr>
+        <td width="600" align="center" class="w640">
+           <span class="article-content" style="font-family:Arial; font-size:24px;color:#333333; font-weight:bold; line-height:26px; color: green;">
+            <img src="http://kurir.bungadavi.co.id/assets/images/kurir/'.$title .'.jpg" style="width: 300px;">
+           </span>
+           <br /><br />
+        </td>
+     </tr>
+     ';
     } elseif($data['statusOrder'] == 4) {
         $SendStatus = '<tr>
         <td width="600" align="center" class="w640">
@@ -309,51 +318,6 @@ if ($success === true) {
                                <td  height="5" bgcolor="#ffffff" class="w640"></td>
                             </tr>
                             <tr>
-                               <td width="642" bgcolor="#ffffff" class="w642">
-                                  <table width="642" cellspacing="0" cellpadding="0" border="0" class="w642">
-                                     <tbody>
-                                        <tr>
-                                           <td width="642" class="w642">
-                                              <table align="center" width="642" cellspacing="5" cellpadding="0" border="0" class="w642" style="background:#555555">
-                                                 <tbody>
-                                                    <tr>
-                                                       <td align="center" width="200" class="w325" bgcolor="#444444" style="padding: 7px 5px;"><span align="center" class="content-head" style="font-family:Arial; color: #ffffff">Order By</span></td>
-                                                       <td align="center" width="200" class="w325" bgcolor="#444444" style="padding: 7px 5px;"><span align="center" class="content-head" style="font-family:Arial; color: #ffffff">Your Email</span></td>
-                                                       <td align="center" width="200" class="w325" bgcolor="#444444" style="padding: 7px 5px;"><span align="center" class="content-head" style="font-family:Arial; color: #ffffff">Your Phone</span></td>
-                                                    </tr>
-                                                 </tbody>
-                                              </table>
-                                           </td>
-                                        </tr>
-                                     </tbody>
-                                  </table>
-                               </td>
-                            </tr>
-                            <tr>
-                               <td  height="10" bgcolor="#ffffff" class="w640"></td>
-                            </tr>
-                            <tr>
-                               <td width="642" bgcolor="#ffffff" class="w642">
-                                  <table width="642" cellspacing="0" cellpadding="0" border="0" class="w642">
-                                     <tbody>
-                                        <tr>
-                                           <td width="642" class="w642">
-                                              <table align="center" width="642" cellspacing="5" cellpadding="0" border="0" class="w642">
-                                                 <tbody>
-                                                    <tr>
-                                                       <td align="center" width="200" class="w325"><span align="center" class="content-body">'. $receivedName.'</span></td>
-                                                       <td align="center" width="200" class="w325"><span align="center" class="content-body">'. $CustomerEmail.'</span></td>
-                                                       <td align="center" width="200" class="w325"><span align="center" class="content-body">'.$CustomerPhone.'</span></td>
-                                                    </tr>
-                                                 </tbody>
-                                              </table>
-                                           </td>
-                                        </tr>
-                                     </tbody>
-                                  </table>
-                               </td>
-                            </tr>
-                            <tr>
                                <td height="15" bgcolor="#ffffff" width="640" class="w640"></td>
                             </tr>
                             <tr>
@@ -494,8 +458,9 @@ if ($success === true) {
                                         </tr>
                                         <tr>
                                            <td width="100px" class="w325" bgcolor="#ffffff" style="padding: 7px 5px; border-bottom: 1px solid;" align="center">
-                                              <span class="content-head" style="font-family:Arial; color:#444444; font-style: italic;">
-                                                 " '.$data['card_isi'].' "
+                                              <span class="content-head" style="font-family:Arial; color:#444444; font-style: italic;"> From: '.$data['card_to'].' <br>
+                                                 " '.$data['card_isi'].' " <br>
+                                                 '.$data['card_from'].'
                                               </span>
                                            </td>
                                         </tr>
@@ -540,7 +505,7 @@ if ($success === true) {
     
     $cc = 'fiki@bungadavi.co.id';
     $config = new Mail();
-    $email = $config->Mailler('ardinirianti@gmail.com', $receivedName, $cc, $subject, $content);
+    $email = $config->Mailler($receivedEmail, $receivedName, $cc, $subject, $content);
     // store a successful response (default at least an empty array). You
     // could return any additional response info you need to the plugin for
     // advanced implementations.
