@@ -60,4 +60,21 @@ $(document).ready(function() {
             }
         })
     });
+    $('#formsuccess').on('submit', function(e) {
+        e.preventDefault();
+
+        var TransactionID = $('#transactionID').val();
+        var reason = $('#alasanreturn').val();
+
+        $.ajax({
+            url: '../php/ajax/kurirs.php?type=successform',
+            method: 'post',
+            data: { 'TransactionID': TransactionID, 'alasan': reason },
+
+            success: function(msg) {
+                location.reload();
+                alert(msg);
+            }
+        })
+    });
 })

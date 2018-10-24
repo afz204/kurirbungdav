@@ -128,6 +128,17 @@
 								<div id="kv-success-2" class="alert alert-success" style="margin-top:10px;display:none"></div>
 								</td>
 							</tr>
+							<tr>
+								<td colspan="3" id="1" style="border: 1px dashed red; border-radius: 20px; padding: 10px; ">
+									<form methode="post" action="" id="formsuccess">
+									<div class="form-group">
+									<textarea class="form-control" id="alasanreturn" rows="3" placeholder="input data"></textarea>
+									<input type="hidden" id="transactionID" value="<?=$data['transactionID']?>">
+									</div>
+									<button type="submit" class="btn btn-sm btn-block btn-primary">Submit Success</button>
+									</form>
+								</td>
+							</tr>
 							<?php } else { ?>
 								<tr class="button">
 								<td colspan="3" id="1">
