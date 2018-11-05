@@ -5,7 +5,7 @@
         'Success',
         'Return'
     ];
-    $newjobs = $config->ProductsJoin('kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs', 'LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " WHERE kurir_jobs.KurirID = '". $datakurir['id'] ."' AND kurir_jobs.StatusKirim NOT IN ( 2, 3)");
+    $newjobs = $config->ProductsJoin('kurir_jobs.ID as IDjobs,kurir_jobs.Status as StatusAcepted, kurir_jobs.StatusKirim as StatusDelivery, transaction.*, provinces.name as ProvinsiName, regencies.name as KotaName, districts.name as Kecamatan, villages.name as Kelurahan', 'kurir_jobs', 'LEFT JOIN transaction on transaction.transactionID = kurir_jobs.TransactionNumber LEFT JOIN provinces ON provinces.id = transaction.provinsi_id LEFT JOIN regencies on regencies.id = transaction.kota_id LEFT JOIN districts ON districts.id = transaction.kecamata_id LEFT JOIN villages on villages.id = transaction.kelurahan_id', " WHERE kurir_jobs.KurirID = '". $datakurir['id'] ."' AND kurir_jobs.StatusKirim NOT IN ( 2, 3)AND kurir_jobs.Status NOT IN (1)");
 
 ?>
 <style>
@@ -57,8 +57,15 @@
                 <div class="content">
                 
                     <?php while($row = $newjobs->fetch(PDO::FETCH_LAZY)) { 
-                        if($row['StatusAcepted'] == 1) $infokirim = '<span class="badge badge-sm badge-success">Accept</span>';
-                        if($row['StatusAcepted'] == 2) $infokirim = '<span class="badge badge-sm badge-danger">Reject</span>';
+                        if($row['StatusAcepted'] == 0) $infokirim = '<span class="badge badge-sm badge-success">Accept</span>';
+                        if($row['StatusAcepted'] == 1) $infokirim = '<span class="badge badge-sm badge-danger">Reject</span>';
+                        $product = $config->Products('*', "transaction_details WHERE id_trx = '".$row['transactionID']."' ");
+                        $nama = [];
+                        while($dd = $product->fetch(PDO::FETCH_LAZY)) {
+                            $nama[] = $dd['product_name'];
+                        }
+                        // print_r($nama);
+                        $total = count($nama);
                         ?>
                         <table border="0">
                         <tr>
@@ -67,6 +74,27 @@
                                 <a href="<?=URL?>index/?p=detail&order=<?=$row['transactionID']?>">OrderNumber #<?=$row['transactionID']?></a>
                             </div>
                             </td>
+                        </tr>
+                        <tr>
+                            <td id="1">Nama Product</td>
+                            <td id="2">:</td>
+                            <td id="3">
+                            <?php 
+                            foreach($nama as $key => $val) {
+                            echo '<span class="badge badge-sm badge-info">'.$val.'</span> </br>';
+                        } ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="1">Total</td>
+                            <td id="2">:</td>
+                            <td id="3"> <?=$total?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="1">Delivery Date</td>
+                            <td id="2">:</td>
+                            <td id="3"><span class="badge badge-sm badge-info"><?=$config->_formatdate($row['delivery_date'])?></span></td>
                         </tr>
                         <tr>
                             <td id="1">Delivery Date</td>
@@ -107,8 +135,8 @@
                         <tr>
                             <td colspan="3" id="4">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" onclick="aceptedreject(1, '<?=$row['transactionID']?>')" class="btn btn-sm btn-outline-success">Accept</button>
-                                <button type="button" onclick="aceptedreject(2, '<?=$row['transactionID']?>')" class="btn btn-sm btn-outline-danger">Reject </button>
+                                <button type="button" onclick="aceptedreject(1, '<?=$row['transactionID']?>', <?=$row['IDjobs']?>)" class="btn btn-sm btn-outline-success">Accept</button>
+                                <button type="button" onclick="aceptedreject(2, '<?=$row['transactionID']?>', <?=$row['IDjobs']?>)" class="btn btn-sm btn-outline-danger">Reject </button>
                             </div>
                             </td>
                         </tr>

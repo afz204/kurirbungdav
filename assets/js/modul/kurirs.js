@@ -1,8 +1,8 @@
-function aceptedreject(type, trx) {
+function aceptedreject(type, trx, id) {
     $.ajax({
         url: 'php/ajax/kurirs.php?type=aceptedreject',
         method: 'post',
-        data: { 'TransactionID': trx, 'Types': type },
+        data: { 'TransactionID': trx, 'Types': type, 'ID': id },
 
         success: function(msg) {
             location.reload();
@@ -28,7 +28,8 @@ $(document).ready(function() {
             return {
                 imagesid: $('#ImagesProductID').val(),
                 imagesname: $('#ImagesName').val(),
-                urlserver: $('#urlserver').val()
+                urlserver: $('#urlserver').val(),
+                notesuccess: $('#notesuccess').val()
             };
         }
     }).on('fileloaded', function(event, file, previewId, index, reader) {

@@ -29,9 +29,15 @@ if(empty($_POST['imagesname'])){
     // or you can throw an exception
     return; // terminate
 }
+if(empty($_POST['notesuccess'])){
+    echo json_encode(['error'=>'input notes.']);
+    // or you can throw an exception
+    return; // terminate
+}
 
 
 
+$notesuccess = empty($_POST['notesuccess']) ? '' : $_POST['notesuccess'];
 $imagesid = empty($_POST['imagesid']) ? '' : $_POST['imagesid'];
 $imagesName = empty($_POST['imagesname']) ? '' : $_POST['imagesname'];
 $urlserver = empty($_POST['urlserver']) ? '' : $_POST['urlserver'];
@@ -66,10 +72,11 @@ for($i=0; $i < count($filenames); $i++){
 // check and process based on successful status
 if ($success === true) {
 
-    $stmt = $config->runQuery("UPDATE kurir_jobs SET StatusKirim = 2,  Photos = :images, Update_by = '".$admin."' where TransactionNumber = :code");
+    $stmt = $config->runQuery("UPDATE kurir_jobs SET StatusKirim = 2, Notes = :notes,  Photos = :images, Update_by = '".$admin."' where TransactionNumber = :code");
     $stmt->execute(array(
         ':images' => $title . '.jpg',
-        ':code'   => $imagesid
+        ':code'   => $imagesid,
+        ':notes'   => $notesuccess
     ));
     $iamgesidnya = $title.'.jpg';
     $updatetransaction = $config->runQuery("UPDATE transaction SET statusOrder = '3', notes = '". $iamgesidnya ."'   WHERE transactionID ='". $imagesid ."' ");
@@ -127,6 +134,8 @@ if ($success === true) {
     $arraypaid = 'UNPAID';
         if($data['statusPaid']) $arraypaid = $arrpaid[$data['statusPaid']];
     
+    $timecharge = '';
+        if($data['delivery_time']) $timecharge = $arrtime[$data['delivery_time']];
     if($data['statusOrder'] == 3) {
         $SendStatus = '<tr>
         <td width="600" align="center" class="w640">
@@ -296,7 +305,7 @@ if ($success === true) {
                                      <tbody>
                                         <tr>
                                            <td width="600" align="center" class="w640">
-                                              <span class="article-content" style="font-family:Arial; font-size:24px;color:#333333; font-weight:bold; line-height:26px">Your Order Transacation: </span>
+                                              <span class="article-content" style="font-family:Arial; font-size:24px;color:#333333; font-weight:bold; line-height:26px">Your Order Transaction: </span>
                                               <br /><br />
                                            </td>
                                         </tr>
@@ -353,13 +362,6 @@ if ($success === true) {
                                         <tr style="background-color: #ffffff;">
                                             <td style="border-bottom: 0.5px solid; font-weight: 600; font-size: 14px; padding: 8px 0px; text-align: center;" colspan="4">Grand Total</td>
                                             <td style="border-bottom: 0.5px solid; font-weight: 600; font-size: 14px; padding: 8px 0px; text-align: right; padding-right: 2px;" colspan="4">'. number_format($total, 2, '.', ',') .'</td>
-                                        </tr>
-                                        <tr style="background-color: #ffffff;">
-                                            <td style="border-bottom: 0.5px solid; font-weight: 600; font-size: 14px; padding: 8px 0px; text-align: center;" colspan="5">
-                                            <div style="background-color: yellow; width: 120px;padding: 8px;border: 1px solid yellow;border-radius: 5px; margin-left: 40%;">
-                                                <span>'.$arraypaid.'</span>
-                                            </div>
-                                            </td>
                                         </tr>
                                     </tbody>
                                   </table>
@@ -424,7 +426,7 @@ if ($success === true) {
                                                                 </tr>
                                                                 <tr>
                                                                    <td width="110" class="w170" style="vertical-align: top;"><span class="content-body1" style="font-family:Arial;">Delivery Date :</span></td>
-                                                                   <td width="170" class="w170" style="vertical-align: top;"><span class="content-body" style="font-family:Arial;">'. $config->_formatdate($data['delivery_date']). '</span> <span style="color: red; font-size: 12px; font-weight: 600;">'.$arraypaid.'</span></td>
+                                                                   <td width="170" class="w170" style="vertical-align: top;"><span class="content-body" style="font-family:Arial;">'. $config->_formatdate($data['delivery_date']). '</span> <span style="color: red; font-size: 12px; font-weight: 600;">'.$timecharge.'</span></td>
                                                                 </tr>
                                                                 <tr>
                                                                    <td width="110" class="w170" style="vertical-align: top;"><span class="content-body1" style="font-family:Arial;">Delivery Note :</span></td>
@@ -503,9 +505,10 @@ if ($success === true) {
     </html>';
     // echo $content;
     
-    $cc = 'fiki@bungadavi.co.id';
+    $cc = '';
     $config = new Mail();
-    $email = $config->Mailler($receivedEmail, $receivedName, $cc, $subject, $content);
+    $email = $config->Mailler('afz60.30@gmail.com', $receivedName, $cc, $subject, $content);
+    // $email = $config->Mailler($receivedEmail, $receivedName, $cc, $subject, $content);
     // store a successful response (default at least an empty array). You
     // could return any additional response info you need to the plugin for
     // advanced implementations.

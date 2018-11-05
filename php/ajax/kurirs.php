@@ -16,6 +16,7 @@ $admin = $config->adminID();
 if($_GET['type'] == 'aceptedreject'){
     $a  = $_POST['TransactionID'];
     $b  = $_POST['Types'];
+    $c  = $_POST['ID'];
 
     $data = $config->getData('*', 'transaction', " transactionID = '". $a ."'");
 
@@ -42,7 +43,7 @@ if($_GET['type'] == 'aceptedreject'){
             $logs = $config->saveLogs($reff, $admin, 'c', 'accepted jobs');
 
             if($stmt) {
-                $update = $config->runQuery("UPDATE kurir_jobs SET kurir_jobs.Status = '1', StatusKirim = 1 WHERE TransactionNumber='". $a ."'");
+                $update = $config->runQuery("UPDATE kurir_jobs SET kurir_jobs.Status = 0, StatusKirim = 1 WHERE ID ='". $c ."'");
                 $update->execute();
 
                 if($update) {
@@ -89,11 +90,13 @@ if($_GET['type'] == 'aceptedreject'){
             //     echo 'kelurahan belum terdaftar di database!';
             // }
         } else {
-            $update = $config->runQuery("UPDATE kurir_jobs SET Status = '2', StatusKirim = 0 WHERE TransactionNumber='". $a ."' AND Status = '' ");
+            $update = $config->runQuery("UPDATE kurir_jobs SET Status = 1, StatusKirim = 0 WHERE ID =". $c ." AND Status = '' ");
             $update->execute();
 
             if($update) {
                 echo 'Success!';
+                $transaction = $config->runQuery("UPDATE transaction SET statusOrder = 1 WHERE transactionID ='".$a."' ");
+                $transaction->execute();
             $logs = $config->saveLogs($a, $admin, 'u', 'transaction');
 
             } else {
